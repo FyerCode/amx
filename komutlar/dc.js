@@ -1,0 +1,92 @@
+const Discord = require('discord.js');
+ 
+exports.run = async (client, message, args) => {
+    const doðruluk = ['Bir zaman makinen olsa hangi zaman dönemine giderdin?',
+                    'Hiç hipnotize edildin mi?',
+                    'Zeka ve güzellik arasýnda bir seçim yapmak zorunda kalsan neyi seçerdin?',
+                    'Daha önce sana verilmiþ en kötü hediye nedir?',
+                    'Hayatýn film olsa seni kim oynardý?',
+'Kaç kere evden gizlice sývýþtýn?',
+'Dilini burnuna deðdirebilir misin?',
+'Dünyada herhangi bir yerde yaþayabilsen nerede yaþardýn?',
+'Hayatýnýn en iyi günü hangisiydi?',
+'Herhangi bir sporla uðraþýyor musun?',
+'Çekici olduðunu düþündüðün bir öðretmenin oldu mu hiç? Kim? Neden?',
+'Günlük tutuyor musun?',
+'Bir çöpçatanlýk sitesine üye olur muydun?',
+'Birine þimdiye kadar yaptýðýnýz en fena eþek þakasý nedir?',
+'Küçükken en sevdiðin çizgi film hangisiydi?',
+'En kötü öpüþmen hangisiydi?',
+'Hiç birinin arabasýna kustun mu?',
+'Zeki mi olmayý tercih edersin yoksa mutlu olmayý mý ve neden?',
+'Hiç cinsel yolla bulaþan bir hastalýðýn oldu mu?',
+'Bisiklete binmeyi ne zaman öðrendin?',
+'Para diye bir þey olmasa ne yapmak isterdin?',
+'Hiç uykunda yürüdün mü?',
+'Çýplak uyur musun?',
+'Hiç bir þeyi kýrýp da baþka birini suçladýðýn oldu mu?',
+'Hiç eve birilerini gizlice soktun mu?',
+'Seninle ilgili en garip þey ne? Bununla gurur duyuyor musun?',
+'Favori Disney karakterin kim?',
+'Bir günlüðüne görünmez olsan ne yapardýn?',
+'Telefonunda arattýðýn en kötü þey nedir?',
+'Bir sabah karþý cins olarak uyansan ilk yapacaðýn ne olurdu?',
+'Hiç ilişkiye girdinmi?',
+'Hiç ilişki teklif eden oldumu?',
+'Hiç sana çıkma teklif eden birileri oldumu?',
+'Hiç öpüştünmü?',
+'Eski sevgilinin fotoğrafını at.']
+    ////////////////////////////////////////////////////////////////////////////////
+     const cesaret = ['Bir tur boyunca maymun gibi davran.',
+                  'Bebek sesiyle þarký söyle.',
+                  'Odandaki en garip eþyanýn fotoðrafýný at.',
+                  'Rastgele birine senden nefret ediyorum mesajý at.',
+                  '2 tur boyunca ana dilin haricinde bir dille konuþ.',
+                  'Karþý cinste en çekici bulduðun þey nedir?',
+                  'Alfabeyi tersten söyle.',
+                  'Eski sevgiline onu özlediðini söyleyen bir mesaj gönder. (Ekran görüntüsü atman lazým.)',
+                  'Söyleceðin her þeyden sonra "31" de.',
+                  'Sevgiline atabileceðin en acýmasýz mesajý at. (Ekran görüntüsü atman lazým)',
+                  '3 kiþiye senden hoþlanýyorum diye mesaj at. (Ekran görüntüsü atman lazým.)',
+                  'Son Whatsapp konuþmaný ss at.',
+                  'Çok yüksek bir sesle baðýr.',
+                  'Selfie çekip at.',
+                  'Gidip bir bardak su iç.',
+                  'Sınıf arkadaşına ondan nefret ettiğini yaz.',
+                  'En nefret ettiğin kişiye onu sevdiğini söyle.',
+                  'Sevgiline ayrılmak istediğini söyle.',
+                  'Sıra arkadaşına Whatsapp dan random at.',
+                  'Sınıftaki herhangi bir kıza çıkma teklif et.',
+                  '(Zorunda değilsiniz)Bir kızı yanağından öp.',
+                  '(Zorunda değilsiniz)Balkondan yoldan geçen birine bağır.' ,
+                  'Odanın fotoğrafını at.']
+   
+    var dogrulukcevap = doðruluk[Math.floor(Math.random() * doðruluk.length)];
+    var cesaretcevap = cesaret[Math.floor(Math.random() * cesaret.length)]
+ 
+    message.channel.send('\`Doðruluk\` mu yoksa \`cesaret\` mi?')
+        const response = await message.channel.awaitMessages(neblm => neblm.author.id === message.author.id, { max: 1, time: 30000 });
+        const choice = response.first().content
+        if (choice == 'doðruluk' || choice == 'd') return message.channel.send(`${dogrulukcevap}`)
+        if (choice !== 'cesaret' && choice !== 'c') {
+            message.channel.send('Lütfen sadece `doðruluk (d)` veya `cesaret (c)` ile cevap verin.')
+        }
+        if (choice == 'cesaret' || choice == 'c') return message.channel.send(cesaretcevap)
+    }
+   
+ 
+   
+ 
+ 
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ['dc'],
+    permLevel: 0
+};
+ 
+exports.help = {
+    name: 'doğrulukcesaret',
+    description: 'Doðruluk cesaret oynarsýnýz',
+    usage: 'doðrulukcesaret'
+};
